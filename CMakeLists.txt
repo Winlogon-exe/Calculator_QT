@@ -9,7 +9,12 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_PREFIX_PATH "D:/QT/6.7.1/msvc2019_64")
+#QT_PATH
+if(NOT DEFINED ENV{QT_PATH})
+    message(STATUS "QT_PATH environment variable is not set, using default path.")
+else()
+    set(CMAKE_PREFIX_PATH $ENV{QT_PATH})
+endif()
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
